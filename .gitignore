@@ -1,0 +1,5 @@
+/*.egg-info
+/venv
+/.tox
+__pycache__
+.*.sw?

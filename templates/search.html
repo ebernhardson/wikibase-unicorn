@@ -1,0 +1,32 @@
+<html>
+    {% include 'head.html' %}
+    <body>
+        <div class="container-fluid">
+            <div class="row" style="margin-top: 1em">
+                <div class="col-md-1">
+                    <h5>Wikibase<br/>Unicorn</h5>
+                </div>
+                <div class="col-md-11">
+                    <form action="/search" method="GET">
+                        <input name="q" type="text" value="{{ q }}" class="form-control"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <p>Results 0 - {{ hits | length }} / {{ total_hits }}</p>
+            <ul class="list-group">
+                {% for hit in hits %}
+                    <li class="list-group-item">{{ hit.id }} - {{ hit.label }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="container">
+            truncated: {{ debug.inner_truncated }} docs,
+            es: {{ "%.1f" | format(debug.es_took_ms) }} ms,
+            net: {{ "%.1f" | format(debug.net_took_ms) }} ms,
+            unicorn: {{ "%.1f" | format(debug.unicorn_took_ms) }} ms,
+            total: {{ "%.1f" | format(debug.total_took_ms) }} ms
+        </div>
+    </body>
+</html>

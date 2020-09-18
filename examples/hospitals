@@ -1,0 +1,3 @@
+(extract P127=
+    (or P31=Q16917
+        (apply P31= P279=Q16917)))
